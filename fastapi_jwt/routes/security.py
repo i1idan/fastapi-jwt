@@ -71,3 +71,9 @@ async def refresh_token(form_data: RefreshToken):
         "refresh_token": refresh_token,
         "token_type": "bearer",
     }
+
+@router.post("/ai")
+async def refresh_token(form_data: RefreshToken):
+    user = await validate_token(token=form_data.refresh_token)
+
+    return {"AI App"}
