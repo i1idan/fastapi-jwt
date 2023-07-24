@@ -1,8 +1,8 @@
 [run]
-source = project_name
+source = fastapi_jwt
 
 [report]
 omit =
     */python?.?/*
     */site-packages/nose/*
-    project_name/__main__.py
+    fastapi_jwt/__main__.py
