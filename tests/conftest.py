@@ -46,7 +46,6 @@ def api_client():
 
 @pytest.fixture(scope="function")
 def api_client_authenticated():
-
     try:
         create_user("admin", "admin", superuser=True)
     except IntegrityError:

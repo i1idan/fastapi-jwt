@@ -223,6 +223,5 @@ AdminUser = Depends(get_current_admin_user)
 
 
 async def validate_token(token: str = Depends(oauth2_scheme)) -> User:
-
     user = get_current_user(token=token)
     return user

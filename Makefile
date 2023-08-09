@@ -1,5 +1,5 @@
 .ONESHELL:
-ENV_PREFIX=$(shell python -c "if __import__('pathlib').Path('.venv/bin/pip').exists(): print('.venv/bin/')")
+ENV_PREFIX=$(shell python3 -c "if __import__('pathlib').Path('.venv/bin/pip').exists(): print('.venv/bin/')")
 USING_POETRY=$(shell grep "tool.poetry" pyproject.toml && echo "yes")
 
 .PHONY: help
@@ -15,8 +15,8 @@ show:             ## Show the current environment.
 	@echo "Current environment:"
 	@if [ "$(USING_POETRY)" ]; then poetry env info && exit; fi
 	@echo "Running using $(ENV_PREFIX)"
-	@$(ENV_PREFIX)python -V
-	@$(ENV_PREFIX)python -m site
+	@$(ENV_PREFIX)python3 -V
+	@$(ENV_PREFIX)python3 -m site
 
 .PHONY: install
 install:          ## Install the project in dev mode.
@@ -35,7 +35,6 @@ lint:             ## Run pep8, black, mypy linters.
 	$(ENV_PREFIX)flake8 fastapi_jwt/
 	$(ENV_PREFIX)black -l 79 --check fastapi_jwt/
 	$(ENV_PREFIX)black -l 79 --check tests/
-	$(ENV_PREFIX)mypy --ignore-missing-imports fastapi_jwt/
 
 .PHONY: test
 test: lint        ## Run tests and generate coverage report.

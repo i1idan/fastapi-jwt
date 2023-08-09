@@ -28,7 +28,6 @@ async def list_users(*, session: Session = ActiveSession):
 
 @router.post("/", response_model=UserResponse, dependencies=[AdminUser])
 async def create_user(*, session: Session = ActiveSession, user: UserCreate):
-
     # verify user with username doesn't already exist
     try:
         await query_user(session=session, user_id_or_username=user.username)

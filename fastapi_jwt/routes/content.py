@@ -90,7 +90,6 @@ async def update_content(
 def delete_content(
     *, session: Session = ActiveSession, request: Request, content_id: int
 ):
-
     content = session.get(Content, content_id)
     if not content:
         raise HTTPException(status_code=404, detail="Content not found")
