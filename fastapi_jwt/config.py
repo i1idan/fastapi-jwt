@@ -10,9 +10,16 @@ settings = Dynaconf(
     settings_files=["settings.toml", ".secrets.toml"],
     environments=["development", "production", "testing"],
     env_switcher="fastapi_jwt_env",
-    load_dotenv=False,
+    load_dotenv=True,
 )
 
+settings = settings.from_env("production")
+dev_settings = settings.from_env("development")
+test_settings = settings.from_env("testing")
+
+print(settings.db)
+print(dev_settings.db)
+print(test_settings.db)
 
 """
 # How to use this application settings

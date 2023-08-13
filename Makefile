@@ -137,8 +137,7 @@ docker-ps: 	  ## Bring down docker dev environment
 
 .PHONY: docker-log
 docker-logs: 	  ## Bring down docker dev environment
-	@docker-compose -f docker-compose-dev.yaml -p fastapi_jwt logs -f app
-
+	@docker-compose -f docker-compose-dev.yaml -p fastapi_jwt logs -f --tail 20
 # This project has been generated from rochacbruno/fastapi-project-template
 # __author__ = 'rochacbruno'
 # __repo__ = https://github.com/rochacbruno/fastapi-project-template

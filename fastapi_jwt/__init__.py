@@ -1,5 +1,5 @@
 from .app import app
-from .config import settings
+from .config import dev_settings, settings, test_settings
 from .db import engine
 
-__all__ = ["app", "cli", "engine", "settings"]
+__all__ = ["app", "cli", "engine", "settings", "dev_settings", "test_settings"]

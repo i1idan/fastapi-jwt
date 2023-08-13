@@ -30,7 +30,7 @@ async def list_users(*, session: Session = ActiveSession):
 async def create_user(*, session: Session = ActiveSession, user: UserCreate):
     # verify user with username doesn't already exist
     try:
-        await query_user(session=session, user_id_or_username=user.username)
+        await query_user_name(session=session, user_name=user.username)
     except HTTPException:
         pass
     else:
@@ -80,17 +80,16 @@ async def update_user_password(
 
 
 @router.get(
-    "/{user_id_or_username}/",
+    "/{user_id}/",
     response_model=UserResponse,
     dependencies=[AuthenticatedUser],
 )
 async def query_user(
-    *, session: Session = ActiveSession, user_id_or_username: Union[str, int]
+    *, session: Session = ActiveSession, user_id: int
 ):
     user = session.query(User).where(
         or_(
-            User.id == user_id_or_username,
-            User.username == user_id_or_username,
+            User.id == user_id,
         )
     )
 
@@ -115,3 +114,17 @@ def delete_user(
     session.delete(user)
     session.commit()
     return {"ok": True}
+
+
+async def query_user_name(
+    *, session: Session = ActiveSession, user_name: str
+):
+    user = session.query(User).where(
+        or_(
+            User.username == user_name,
+        )
+    )
+
+    if not user.first():
+        raise HTTPException(status_code=404, detail="User not found")
+    return user.first()

@@ -8,7 +8,8 @@ from sqlalchemy.exc import IntegrityError
 # This next line ensures tests uses its own database and settings environment
 os.environ["FORCE_ENV_FOR_DYNACONF"] = "testing"  # noqa
 # WARNING: Ensure imports from `fastapi_jwt` comes after this line
-from fastapi_jwt import app, settings, db  # noqa
+from fastapi_jwt import app, db  # noqa
+from fastapi_jwt import test_settings as settings  # noqa
 from fastapi_jwt.cli import create_user, cli  # noqa
 
 

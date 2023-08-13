@@ -20,8 +20,19 @@ services:
     volumes:
       - $HOME/.postgres/fastapi_jwt_db/data/postgresql:/var/lib/postgresql/data
     ports:
-      - 5435:5432
+      - 5432:5432
     environment:
       - POSTGRES_DBS=fastapi_jwt, fastapi_jwt_test
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_CONFIG_SERVER_MODE: "True"
+    ports:
+      - "5050:80"

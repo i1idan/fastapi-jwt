@@ -10,10 +10,12 @@ reload = true
 cors_origins = ["http://localhost:3000", "http://localhost:4200"]
 
 [production]
-dynaconf_merge = true
+dynaconf_merge = false
 
 [production.db]
-echo = false
+echo = true
+uri = "@jinja postgresql://postgres:postgres@db:5432/fastapi_jwt"
+connect_args = {}
 
 [production.server]
 log_level = "error"
