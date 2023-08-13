@@ -1,14 +1,13 @@
 from datetime import datetime, timedelta
-from typing import Callable, List, Optional, Union
+from typing import Callable, Optional, Union
 
 from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
-from sqlmodel import Field, Relationship, Session, SQLModel
+from sqlmodel import Field, Session, SQLModel
 
-from fastapi_jwt.models.content import Content, ContentResponse
 
 from .config import settings
 from .db import engine
@@ -73,8 +72,6 @@ class User(SQLModel, table=True):
     superuser: bool = False
     disabled: bool = False
 
-    # it populates the .user attribute on the Content Model
-    contents: List["Content"] = Relationship(back_populates="user")
 
 
 class UserResponse(BaseModel):
@@ -86,7 +83,6 @@ class UserResponse(BaseModel):
     username: str
     disabled: bool
     superuser: bool
-    contents: Optional[List[ContentResponse]] = Field(default_factory=list)
 
 
 class UserCreate(BaseModel):

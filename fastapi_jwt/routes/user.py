@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List
 
 from fastapi import APIRouter, Request
 from fastapi.exceptions import HTTPException

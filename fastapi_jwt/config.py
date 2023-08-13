@@ -17,9 +17,6 @@ settings = settings.from_env("production")
 dev_settings = settings.from_env("development")
 test_settings = settings.from_env("testing")
 
-print(settings.db)
-print(dev_settings.db)
-print(test_settings.db)
 
 """
 # How to use this application settings
