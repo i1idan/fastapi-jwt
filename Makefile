@@ -110,10 +110,6 @@ switch-to-poetry: ## Switch to poetry package manager.
 	@echo "You have switched to https://python-poetry.org/ package manager."
 	@echo "Please run 'poetry shell' or 'poetry run fastapi_jwt'"
 
-.PHONY: init
-init:             ## Initialize the project based on an application template.
-	@./.github/init.sh
-
 .PHONY: shell
 shell:            ## Open a shell in the project.
 	@if [ "$(USING_POETRY)" ]; then poetry shell; exit; fi

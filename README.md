@@ -18,20 +18,10 @@ pip install fastapi_jwt
 
 ## Executing
 
-```bash
-$ fastapi_jwt run --port 8080
-```
-
-or
 
 ```bash
-python -m fastapi_jwt run --port 8080
-```
-
-or
-
-```bash
-$ uvicorn fastapi_jwt:app
+$ make docker-build
+$ make docker-run
 ```
 
 ## CLI

@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    container_name: jwt_auth
     ports:
       - "8000:8000"
     environment:
@@ -31,8 +32,8 @@ services:
     image: dpage/pgadmin4
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com # add in .env
+      PGADMIN_DEFAULT_PASSWORD: root # add in .env
       PGADMIN_CONFIG_SERVER_MODE: "True"
     ports:
       - "5050:80"
