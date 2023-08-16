@@ -32,11 +32,9 @@ def read_requirements(path):
 setup(
     name="fastapi_jwt",
     version=read("fastapi_jwt", "VERSION"),
-    description="Awesome fastapi_jwt created by i1idan",
-    url="https://github.com/i1idan/fastapi-jwt/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    author="i1idan",
+    author="maryam saeedi",
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
     entry_points={
