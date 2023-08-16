@@ -8,7 +8,6 @@ from passlib.context import CryptContext
 from pydantic import BaseModel
 from sqlmodel import Field, Session, SQLModel
 
-
 from .config import settings
 from .db import engine
 
@@ -71,7 +70,6 @@ class User(SQLModel, table=True):
     password: HashedPassword
     superuser: bool = False
     disabled: bool = False
-
 
 
 class UserResponse(BaseModel):

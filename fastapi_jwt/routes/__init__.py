@@ -13,4 +13,4 @@ main_router.include_router(user_router, prefix="/user", tags=["user"])
 
 @main_router.get("/")
 async def index():
-    return {"message": "Hello World!"}
+    return {"message": "JWT API is up!"}

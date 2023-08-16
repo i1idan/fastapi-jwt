@@ -22,24 +22,9 @@ def read(*paths, **kwargs):
     return content
 
 
-description = """
-fastapi_jwt API helps you do awesome stuff. 🚀
-"""
-
 app = FastAPI(
     title="fastapi_jwt",
-    description=description,
     version=read("VERSION"),
-    terms_of_service="http://fastapi_jwt.com/terms/",
-    contact={
-        "name": "i1idan",
-        "url": "http://fastapi_jwt.com/contact/",
-        "email": "i1idan@fastapi_jwt.com",
-    },
-    license_info={
-        "name": "The Unlicense",
-        "url": "https://unlicense.org",
-    },
 )
 
 if settings.server and settings.server.get("cors_origins", None):

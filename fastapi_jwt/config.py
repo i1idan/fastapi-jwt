@@ -55,10 +55,4 @@ export fastapi_jwt_KEY="@jinja {{ this.db.uri }}"
 export fastapi_jwt_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
 ```
 
-### Switching environments
-```
-fastapi_jwt_ENV=production fastapi_jwt run
-```
-
-Read more on https://dynaconf.com
 """

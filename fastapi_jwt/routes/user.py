@@ -84,9 +84,7 @@ async def update_user_password(
     response_model=UserResponse,
     dependencies=[AuthenticatedUser],
 )
-async def query_user(
-    *, session: Session = ActiveSession, user_id: int
-):
+async def query_user(*, session: Session = ActiveSession, user_id: int):
     user = session.query(User).where(
         or_(
             User.id == user_id,
@@ -116,9 +114,7 @@ def delete_user(
     return {"ok": True}
 
 
-async def query_user_name(
-    *, session: Session = ActiveSession, user_name: str
-):
+async def query_user_name(*, session: Session = ActiveSession, user_name: str):
     user = session.query(User).where(
         or_(
             User.username == user_name,

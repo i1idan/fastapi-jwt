@@ -9,22 +9,22 @@ def test_user_create(api_client_authenticated):
     response = api_client_authenticated.post(
         "/user/",
         json={
-            "username": "foo",
-            "password": "bar",
+            "username": "pacs",
+            "password": "pacs",
             "superuser": False,
             "disabled": False,
         },
     )
     assert response.status_code == 200
     result = response.json()
-    assert result["username"] == "foo"
+    assert result["username"] == "pacs"
 
     # verify a username can't be used for multiple accounts
     response = api_client_authenticated.post(
         "/user/",
         json={
-            "username": "foo",
-            "password": "bar",
+            "username": "pacs",
+            "password": "pacs",
             "superuser": False,
             "disabled": False,
         },
@@ -39,29 +39,17 @@ def test_user_by_id(api_client_authenticated):
     assert "admin" in result["username"]
 
 
-# def test_user_by_username(api_client_authenticated):
-#     response = api_client_authenticated.get("/user/admin")
-#     assert response.status_code == 200
-#     result = response.json()
-#     assert "admin" in result["username"]
-
-
 def test_user_by_bad_id(api_client_authenticated):
     response = api_client_authenticated.get("/user/42")
     result = response.json()
     assert response.status_code == 404
 
 
-# def test_user_by_bad_username(api_client_authenticated):
-#     response = api_client_authenticated.get("/user/nouser")
-#     assert response.status_code == 404
-
-
 def test_user_change_password_no_auth(api_client):
     # user doesn't exist
     response = api_client.patch(
         "/user/1/password/",
-        json={"password": "foobar!", "password_confirm": "foobar!"},
+        json={"password": "pacs!", "password_confirm": "pacs!"},
     )
     assert response.status_code == 401
 
@@ -70,7 +58,7 @@ def test_user_change_password_insufficient_auth(api_client):
     # login as non-superuser
     token = api_client.post(
         "/token",
-        data={"username": "foo", "password": "bar"},
+        data={"username": "pacs", "password": "pacs"},
         headers={"Content-Type": "application/x-www-form-urlencoded"},
     ).json()["access_token"]
     api_client.headers["Authorization"] = f"Bearer {token}"
@@ -78,7 +66,7 @@ def test_user_change_password_insufficient_auth(api_client):
     # try to update admin user (id: 1)
     response = api_client.patch(
         "/user/1/password/",
-        json={"password": "foobar!", "password_confirm": "foobar!"},
+        json={"password": "pacs!", "password_confirm": "pacs!"},
     )
     assert response.status_code == 403
 
@@ -90,7 +78,7 @@ def test_user_change_password(api_client_authenticated):
     # user doesn't exist
     response = api_client_authenticated.patch(
         "/user/42/password/",
-        json={"password": "foobar!", "password_confirm": "foobar!"},
+        json={"password": "pacs!", "password_confirm": "pacs!"},
     )
     assert response.status_code == 404
 
