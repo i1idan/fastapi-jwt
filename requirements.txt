@@ -1,15 +1,11 @@
-# This template is a low-dependency template.
-# By default there is no requirements added here.
-# Add the requirements you need to this file.
-# or run `make init` to create this file automatically based on the template.
-# You can also run `make switch-to-poetry` to use the poetry package manager.
-fastapi
-uvicorn
-sqlmodel
-typer
-dynaconf
-jinja2
-python-jose[cryptography]
-passlib[bcrypt]
-python-multipart
-psycopg2-binary
+
+fastapi==0.101.0
+uvicorn==0.23.2
+sqlmodel==0.0.8
+typerr==0.9.0
+dynaconf==3.2.0
+jinja2==3.1.2
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+psycopg2-binary==2.9.7
